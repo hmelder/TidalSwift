@@ -25,8 +25,8 @@ public class Config {
 		accessToken: String,
 		refreshToken: String?,
 		apiToken: String? = nil,
-		clientId: String = "aR7gUaTK1ihpXOEP",
-		clientSecret: String = "eVWBEkuL2FCjxgjOkR3yK0RYZEbcrMXRc2l8fU3ZCdE=",
+		clientId: String = "4ywnjRfroi84hz7i", // Updated Keys
+		clientSecret: String = "7cNdrLt3NIQg0CHEpMDjcbV38XlwVdstczHqf59QiI0=",
 		offlineAudioQuality: AudioQuality,
 		urlType: AudioUrlType,
 		apiLocation: String = "https://api.tidal.com/v1",
