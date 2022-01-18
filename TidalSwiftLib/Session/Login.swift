@@ -70,7 +70,7 @@ extension Session {
 		let subject = CurrentValueSubject<AuthorizationState, Never>(.waiting)
 		
 		let url = URL(string: "\(config.authLocation)/device_authorization")!
-		let parameters: [String: String] = ["client_id": config.clientId,
+        let parameters: [String: String] = ["client_id": AuthInformation.ClientID,
 											"scope": "r_usr+w_usr+w_sub"]
 		
 		Network.asyncPost(url: url, parameters: parameters, accessToken: nil, xTidalToken: nil) { [weak self] response in
@@ -105,8 +105,8 @@ extension Session {
 	
 	private func startAuthorizationPolling(deviceCode: UUID, subject: CurrentValueSubject<AuthorizationState, Never>) {
 		let url = URL(string: "\(config.authLocation)/token")!
-		let parameters: [String: String] = ["client_id": config.clientId,
-											"client_secret": config.clientSecret,
+        let parameters: [String: String] = ["client_id": AuthInformation.ClientID,
+                                            "client_secret": AuthInformation.ClientSecret,
 											"device_code": deviceCode.uuidString.lowercased(),
 											"grant_type": "urn:ietf:params:oauth:grant-type:device_code",
 											"scope": "r_usr+w_usr+w_sub"]
@@ -181,8 +181,8 @@ extension Session {
 			return
 		}
 		let url = URL(string: "\(config.authLocation)/token")!
-		let parameters: [String: String] = ["client_id": config.clientId,
-											"client_secret": config.clientSecret,
+        let parameters: [String: String] = ["client_id": AuthInformation.ClientID,
+                                            "client_secret": AuthInformation.ClientSecret,
 											"refresh_token": refreshToken,
 											"grant_type": "refresh_token",
 											"scope": "r_usr+w_usr+w_sub"]
